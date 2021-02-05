@@ -1,0 +1,25 @@
+{
+  "name": "scrape",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.ts",
+  "scripts": {
+    "compile": "tsc",
+    "start": "npm run compile && node ./lib/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chromedriver": "~88.0.0",
+    "dotenv": "^8.2.0",
+    "nodemailer": "~6.4.17",
+    "selenium-webdriver": "~4.0.0-alpha.8"
+  },
+  "devDependencies": {
+    "@types/node": "~14.14.25",
+    "@types/nodemailer": "~6.4.0",
+    "@types/selenium-webdriver": "~4.0.11",
+    "typescript": "~4.1.3"
+  }
+}
