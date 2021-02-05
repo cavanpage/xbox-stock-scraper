@@ -17,7 +17,7 @@ export const monitorNewegg = async() => {
 
         if(isInStock){
             const message: string = 'newegg: xbox is ' + statusText;
-            notify(message, message)
+            notify(message, message, true)
             log('newegg: in stock')
         }else{
           log('newegg: out of stock')

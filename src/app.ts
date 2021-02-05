@@ -1,5 +1,14 @@
 import { monitorNewegg } from './newegg';
+import { notify } from './utitlities';
 import { monitorWalMart } from './walmart';
 
-monitorNewegg();
-monitorWalMart();
+notify('Application Started');
+
+try{
+  monitorNewegg();
+  monitorWalMart();
+}
+catch(e){
+  notify('Application Stopped');
+}
+

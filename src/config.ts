@@ -2,6 +2,7 @@ require('dotenv').config()
 import SMTPTransport from 'nodemailer/lib/smtp-transport';
 
 interface IXboxStockScraperConfig{
+    appName: string,
     email: {
         transport: SMTPTransport.Options,
         toAddress: string;
@@ -19,6 +20,7 @@ const {
 } = process.env;
 
 export const config: IXboxStockScraperConfig = {
+    appName: 'Xbox Stock Scaper',
     email: {
         transport: {
             host: SMTP_HOST,

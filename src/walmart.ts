@@ -22,7 +22,7 @@ export const monitorWalMart = async() => {
           const isInStock: boolean = statusText.indexOf(outOfStockMessage) === -1;
   
           if(isInStock){
-            notify('walmart: xbox is ' + statusText, allText.join('-'));
+            notify('walmart: xbox is ' + statusText, allText.join('-'), true);
             log('walmart: in stock')
           }else{
             log('walmart: out of stock')
