@@ -18,8 +18,6 @@ export const notify = (subject: string, body?: string, isEmailEnabled?: boolean)
       icon: path.join(__dirname, '../resources/xbox-icon.png')
   });
   
-  console.log('dirname', __dirname);
-
   if(isEmailEnabled){
     const message: MailOptions = {
         from: config.email.fromAddress,
