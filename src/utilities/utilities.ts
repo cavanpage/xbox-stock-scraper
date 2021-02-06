@@ -17,6 +17,7 @@ export const notify = (
 ) => {
   const joinedMessage: string =
     link !== undefined ? `${subject}: ${link}` : subject;
+
   notifier.notify({
     title: config.appName,
     message: joinedMessage,
