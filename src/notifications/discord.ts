@@ -1,6 +1,6 @@
 import axios from "axios";
 import { config } from "../config";
-import { error, log } from "../utilities/utilities";
+import { error } from "../utilities/utilities";
 
 export const sendDiscordMessage = (message: string) => {
   if (config.discordHookUrl) {

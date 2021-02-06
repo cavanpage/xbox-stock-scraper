@@ -1,15 +1,11 @@
 import {
   BESTBUY_URL,
-  config,
   GAMESTOP_URL,
   NEWEGG_URL,
   TARGET_URL,
   WALMART_URL
 } from "../config";
-
 import { Builder, ThenableWebDriver } from "selenium-webdriver";
-import { sendEmail } from "../notifications/email";
-import { sendDiscordMessage } from "../notifications/discord";
 import { Carrier, IMonitorConfig } from "../interfaces";
 import {
   bestBuyHandler,
