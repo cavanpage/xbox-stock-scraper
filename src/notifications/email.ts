@@ -1,7 +1,7 @@
 import Mail, { Options as MailOptions } from "nodemailer/lib/mailer";
 import { createTransport, SentMessageInfo } from "nodemailer";
 import { config } from "../config";
-import { error, log } from "../utilities/utilities";
+import { error, log } from "../utilities";
 
 const transporter: Mail = createTransport(config.email.transport);
 
