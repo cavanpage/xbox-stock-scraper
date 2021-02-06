@@ -1,10 +1,11 @@
-import { monitorNewegg } from './newegg';
-import { notify } from './utitlities';
-import { monitorWalMart } from './walmart';
+import { monitorGamestop, monitorNewegg, monitorWalMart } from './carriers';
+import { config } from './config';
+import { notify } from './utilities';
 
-notify('Application Started');
+notify('Application Started', config.gamestopUrl, true);
 
 try{
+  monitorGamestop();
   monitorNewegg();
   monitorWalMart();
 }

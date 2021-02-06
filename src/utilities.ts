@@ -2,6 +2,7 @@ import Mail, {Options as MailOptions} from 'nodemailer/lib/mailer';
 import {createTransport, SentMessageInfo} from 'nodemailer';
 import { config } from './config';
 import notifier from 'node-notifier';
+import { Builder, ThenableWebDriver } from 'selenium-webdriver';
 const path = require('path');
 
 const transporter: Mail = createTransport(config.email.transport);
@@ -10,8 +11,8 @@ export const log = (message: any) => {
     console.log(`${new Date()}: ${message}`);
 }
 
-export const notify = (subject: string, body?: string, isEmailEnabled?: boolean) => { 
-  const joinedMessage: string = body !== undefined ? `${subject}: ${body}` : subject;
+export const notify = (subject: string, link?: string, isEmailEnabled?: boolean) => { 
+  const joinedMessage: string = link !== undefined ? `${subject}: ${link}"` : subject;
   notifier.notify({
       title: config.appName,
       message: joinedMessage,
@@ -19,11 +20,12 @@ export const notify = (subject: string, body?: string, isEmailEnabled?: boolean)
   });
   
   if(isEmailEnabled){
-    const message: MailOptions = {
+    try{
+      const message: MailOptions = {
         from: config.email.fromAddress,
         to: config.email.toAddress,
         subject,
-        text: body !== undefined ? body: subject
+        text: link !== undefined ? `${subject}: <a href="${link}">go to item</a>`: subject
       }
       transporter.sendMail(message, (err: Error | null, info: SentMessageInfo) => {
         if(err){
@@ -33,9 +35,17 @@ export const notify = (subject: string, body?: string, isEmailEnabled?: boolean)
           log('email sent successfully');
         }
       });
+    }
+    catch(e){
+      log({'error sending email, make sure .env is setup correctly': e});
+    }
   }
 };
 
 export const sleep = (ms: number) => {
   return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+export const createWebDriver = async (): Promise<ThenableWebDriver> => {
+  return await new Builder().forBrowser('chrome').build();
 }

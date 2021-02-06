@@ -1,23 +1,21 @@
 require('chromedriver');
-import {Builder, By} from 'selenium-webdriver';
-import { log, notify, sleep } from './utitlities';
+import { By } from 'selenium-webdriver';
+import { createWebDriver, log, notify, sleep } from '../utilities';
 
 export const monitorNewegg = async() => {
     const url: string = 'https://www.newegg.com/p/N82E16868105273';
-    const outOfStockMessage: string = "OUT OF STOCK";
-    const driver = await new Builder().forBrowser('chrome').build();
+    const driver = await createWebDriver();
+
     try{
       while(true){
-        await driver.get(url);
         log('newegg: checking');
+        await driver.get(url);
         const stockTags = await driver.findElements(By.css('.product-inventory > strong'));
-
         const statusText: string = await stockTags[0].getText();
-        const isInStock: boolean = statusText.indexOf(outOfStockMessage) === -1;
+        const isInStock: boolean = statusText.indexOf("OUT OF STOCK") === -1;
 
         if(isInStock){
-            const message: string = 'newegg: xbox is ' + statusText;
-            notify(message, message, true)
+            notify('newegg: in stock', url, true)
             log('newegg: in stock')
         }else{
           log('newegg: out of stock')
