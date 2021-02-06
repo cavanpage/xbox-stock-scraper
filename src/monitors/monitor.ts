@@ -1,5 +1,6 @@
 import { IMonitorConfig } from "../interfaces";
-import { createWebDriver, error, log, notify, sleep } from "../utilities";
+import { notify } from "../notifications";
+import { createWebDriver, error, log, sleep } from "../utilities";
 
 export const monitor = async({name, url, inStockHandler, refreshRateMs=30000} : IMonitorConfig): Promise<void> => {
 

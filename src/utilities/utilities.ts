@@ -1,12 +1,11 @@
 import { BESTBUY_URL, config, GAMESTOP_URL, NEWEGG_URL, TARGET_URL, WALMART_URL } from "../config";
-import notifier from "node-notifier";
+
 import { Builder, ThenableWebDriver } from "selenium-webdriver";
-import { sendEmail } from "./email";
-import { sendDiscordMessage } from "./discord";
+import { sendEmail } from "../notifications/email";
+import { sendDiscordMessage } from "../notifications/discord";
 import { Carrier, IMonitorConfig } from "../interfaces";
 import { bestBuyHandler, gamestopHandler, neweggHandler, targetHandler, walmartHandler } from "../handlers";
 require("chromedriver");
-const path = require("path");
 
 const handlerConfigs: Record<Carrier | string, IMonitorConfig> = {
   [Carrier.WALMART]: { 
@@ -43,33 +42,6 @@ export const log = (message: any) => {
 
 export const error = (message: any) => {
   console.error(`${new Date()}: ${message}`)
-};
-
-export const notify = (
-  subject: string,
-  link?: string,
-  shouldSendEmail?: boolean,
-  shouldNotifyDiscord?: boolean
-) => {
-
-  const joinedMessage: string =
-    link !== undefined ? `${subject}: ${link}` : subject;
-
-  log(subject);
-
-  notifier.notify({
-    title: config.appName,
-    message: joinedMessage,
-    icon: path.join(__dirname, "../resources/xbox-icon.png"),
-  });
-
-  if (shouldSendEmail) {
-    sendEmail(subject, joinedMessage);
-  }
-
-  if (shouldNotifyDiscord) {
-    sendDiscordMessage(joinedMessage);
-  }
 };
 
 export const sleep = (ms: number) => {

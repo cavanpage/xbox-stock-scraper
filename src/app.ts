@@ -1,5 +1,6 @@
-import { getAllHandlerConfigs, notify } from "./utilities";
+import { getAllHandlerConfigs } from "./utilities";
 import { monitor } from "./monitors";
+import { notify } from "./notifications";
 
 notify("Application Started");
 
