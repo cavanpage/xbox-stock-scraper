@@ -12,7 +12,7 @@ export const log = (message: any) => {
 }
 
 export const notify = (subject: string, link?: string, isEmailEnabled?: boolean) => { 
-  const joinedMessage: string = link !== undefined ? `${subject}: ${link}"` : subject;
+  const joinedMessage: string = link !== undefined ? `${subject}: ${link}` : subject;
   notifier.notify({
       title: config.appName,
       message: joinedMessage,
@@ -25,7 +25,7 @@ export const notify = (subject: string, link?: string, isEmailEnabled?: boolean)
         from: config.email.fromAddress,
         to: config.email.toAddress,
         subject,
-        text: link !== undefined ? `${subject}: <a href="${link}">go to item</a>`: subject
+        text: link !== undefined ? joinedMessage: subject
       }
       transporter.sendMail(message, (err: Error | null, info: SentMessageInfo) => {
         if(err){
