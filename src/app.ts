@@ -1,16 +1,12 @@
-import { monitorGamestop, monitorNewegg, monitorWalMart } from "./carriers";
-import { monitorBestbuy } from "./carriers/bestbuy";
-import { monitorTarget } from "./carriers/target";
-import { notify } from "./utilities";
+import { getAllHandlerConfigs, notify } from "./utilities";
+import { monitor } from "./monitors";
 
 notify("Application Started");
 
 try {
-  monitorBestbuy();
-  monitorGamestop();
-  monitorNewegg();
-  monitorTarget();
-  monitorWalMart();
+  getAllHandlerConfigs().forEach(x => {
+    monitor(x);
+  });
 } catch (e) {
   notify("Application Stopped");
 }
