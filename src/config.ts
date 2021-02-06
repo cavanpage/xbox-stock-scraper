@@ -26,7 +26,7 @@ const {
 } = process.env;
 
 export const config: IXboxStockScraperConfig = {
-    appName: 'Xbox Stock Scaper',
+    appName: 'Xbox Stock Scraper',
     walmartUrl: WALMART_URL,
     neweggUrl: NEWEGG_URL,
     gamestopUrl: GAMESTOP_URL,
