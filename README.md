@@ -5,8 +5,10 @@ uses chromedriver to perform web scraping
 ## usage
 Install: `npm i`
 
-make sure .env file is populated if you would like to send emails
+rename `dotenv.example` to `dotenv` and fill in discord and/or email notification information .
+Desktop notifications are always enabled
 
 Run: `npm run start`
 
 If you run into errors , you may need to install typescript globally (`npm i -g typescript`)
+
