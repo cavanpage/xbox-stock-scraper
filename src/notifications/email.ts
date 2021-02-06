@@ -11,7 +11,7 @@ export const sendEmail = (subject: string, body: string) => {
       from: config.email.fromAddress,
       to: config.email.toAddress,
       subject,
-      text: body,
+      text: body
     };
 
     transporter.sendMail(

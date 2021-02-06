@@ -28,7 +28,7 @@ export const {
   SMTP_AUTH_USER,
   SMTP_AUTH_PASSWORD,
   EMAIL_TO = "",
-  EMAIL_FROM = "",
+  EMAIL_FROM = ""
 } = process.env;
 
 export const config: IXboxStockScraperConfig = {
@@ -45,10 +45,10 @@ export const config: IXboxStockScraperConfig = {
       port: Number(SMTP_PORT),
       auth: {
         user: SMTP_AUTH_USER,
-        pass: SMTP_AUTH_PASSWORD,
-      },
+        pass: SMTP_AUTH_PASSWORD
+      }
     },
     toAddress: EMAIL_TO,
-    fromAddress: EMAIL_FROM,
-  },
+    fromAddress: EMAIL_FROM
+  }
 };

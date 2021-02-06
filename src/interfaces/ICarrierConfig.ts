@@ -1,4 +1,4 @@
-export interface ICarrerConfig{
-    url: string;
-    refreshRateMs?: number
+export interface ICarrerConfig {
+  url: string;
+  refreshRateMs?: number;
 }

@@ -5,7 +5,7 @@ import { notify } from "./notifications";
 notify("Application Started");
 
 try {
-  getAllHandlerConfigs().forEach(x => {
+  getAllHandlerConfigs().forEach((x) => {
     monitor(x);
   });
 } catch (e) {

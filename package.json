@@ -4,7 +4,7 @@
   "description": "scrapes stock information about xbox one series x from various carriers",
   "main": "app.ts",
   "scripts": {
-    "pretty": "pretty-quick",
+    "pretty": "prettier --write --trailing-comma none .",
     "compile": "tsc",
     "start": "npm run compile && node ./lib/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
