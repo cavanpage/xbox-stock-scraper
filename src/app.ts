@@ -1,14 +1,12 @@
-import { monitorGamestop, monitorNewegg, monitorWalMart } from './carriers';
-import { notify } from './utilities';
+import { monitorGamestop, monitorNewegg, monitorWalMart } from "./carriers";
+import { notify } from "./utilities";
 
-notify('Application Started');
+notify("Application Started");
 
-try{
+try {
   monitorGamestop();
   monitorNewegg();
   monitorWalMart();
+} catch (e) {
+  notify("Application Stopped");
 }
-catch(e){
-  notify('Application Stopped');
-}
-
