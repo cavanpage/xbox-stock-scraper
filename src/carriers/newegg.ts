@@ -1,6 +1,6 @@
 require('chromedriver');
 import { By } from 'selenium-webdriver';
-import { createWebDriver, log, notify, sleep } from '../utilities';
+import { createWebDriver, log, notify, sleep } from '../utilities/utilities';
 
 export const monitorNewegg = async() => {
     const url: string = 'https://www.newegg.com/p/N82E16868105273';
@@ -15,7 +15,7 @@ export const monitorNewegg = async() => {
         const isInStock: boolean = statusText.indexOf("OUT OF STOCK") === -1;
 
         if(isInStock){
-            notify('newegg: in stock', url, true)
+            notify('newegg: in stock', url, true, true);
             log('newegg: in stock')
         }else{
           log('newegg: out of stock')

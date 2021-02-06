@@ -1,7 +1,7 @@
 require('chromedriver');
 import { By } from 'selenium-webdriver';
 import { config } from '../config';
-import { createWebDriver, log, notify, sleep } from '../utilities';
+import { createWebDriver, log, notify, sleep } from '../utilities/utilities';
 
 export const monitorGamestop = async() => {
     const url: string = config.gamestopUrl;
@@ -15,7 +15,7 @@ export const monitorGamestop = async() => {
           const isInStock = await addToCartButton[0].isEnabled();
           
           if(isInStock){
-            notify('gamestop: in stock', url, true);
+            notify('gamestop: in stock', url, true, true);
             log('gamestop: in stock');
           }else{
             log('gamestop: out of stock');
