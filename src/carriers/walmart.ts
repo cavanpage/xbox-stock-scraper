@@ -1,6 +1,6 @@
 require("chromedriver");
 import { By } from "selenium-webdriver";
-import { createWebDriver, log, notify, sleep } from "../utilities/utilities";
+import { createWebDriver, error, log, notify, sleep } from "../utilities";
 
 export const monitorWalMart = async () => {
   const url =
@@ -24,7 +24,7 @@ export const monitorWalMart = async () => {
       await sleep(500000);
     }
   } catch (e) {
-    log({ "walmart:error": e });
+    error({ "walmart:error": e });
   } finally {
     await driver.quit();
   }

@@ -1,6 +1,6 @@
 require("chromedriver");
 import { By } from "selenium-webdriver";
-import { createWebDriver, log, notify, sleep } from "../utilities/";
+import { createWebDriver, error, log, notify, sleep } from "../utilities";
 
 export const monitorNewegg = async () => {
   const url: string = "https://www.newegg.com/p/N82E16868105273";
@@ -25,7 +25,7 @@ export const monitorNewegg = async () => {
       await sleep(30000);
     }
   } catch (e) {
-    log({ "newegg:error": e });
+    error({ "newegg:error": e });
   } finally {
     await driver.quit();
   }

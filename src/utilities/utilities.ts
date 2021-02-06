@@ -9,12 +9,17 @@ export const log = (message: any) => {
   console.log(`${new Date()}: ${message}`);
 };
 
+export const error = (message: any) => {
+  console.error(`${new Date()}: ${message}`)
+};
+
 export const notify = (
   subject: string,
   link?: string,
   shouldSendEmail?: boolean,
   shouldNotifyDiscord?: boolean
 ) => {
+
   const joinedMessage: string =
     link !== undefined ? `${subject}: ${link}` : subject;
 

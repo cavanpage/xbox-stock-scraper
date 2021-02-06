@@ -1,7 +1,7 @@
 import Mail, { Options as MailOptions } from "nodemailer/lib/mailer";
 import { createTransport, SentMessageInfo } from "nodemailer";
 import { config } from "../config";
-import { log } from "./utilities";
+import { error, log } from "./utilities";
 
 const transporter: Mail = createTransport(config.email.transport);
 
@@ -25,6 +25,6 @@ export const sendEmail = (subject: string, body: string) => {
       }
     );
   } catch (e) {
-    log({ "error sending email, make sure .env is setup correctly": e });
+    error({ "error sending email, make sure .env is setup correctly": e });
   }
 };

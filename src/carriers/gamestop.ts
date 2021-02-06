@@ -1,7 +1,7 @@
 require("chromedriver");
 import { By } from "selenium-webdriver";
 import { config } from "../config";
-import { createWebDriver, log, notify, sleep } from "../utilities/utilities";
+import { createWebDriver, error, log, notify, sleep } from "../utilities";
 
 export const monitorGamestop = async () => {
   const url: string = config.gamestopUrl;
@@ -23,7 +23,7 @@ export const monitorGamestop = async () => {
       await sleep(30000);
     }
   } catch (e) {
-    log({ "gamestop:error": e });
+    error({ "gamestop:error": e });
   } finally {
     await driver.quit();
   }
