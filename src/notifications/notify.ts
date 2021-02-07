@@ -20,7 +20,7 @@ export const notify = (
   notifier.notify({
     title: appName,
     message: joinedMessage,
-    icon: path.join(__dirname, "../resources/xbox-icon.png")
+    icon: path.join(__dirname, "../../resources/xbox-icon.png")
   });
 
   if (shouldSendEmail) {

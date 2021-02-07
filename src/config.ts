@@ -1,5 +1,8 @@
-require("dotenv").config();
 import SMTPTransport from "nodemailer/lib/smtp-transport";
+import dontenv from 'dotenv';
+import path from 'path';
+
+dontenv.config({path: path.resolve(__dirname, '../dotenv')});
 
 interface IXboxStockScraperConfig {
   appName: string;

@@ -6,7 +6,7 @@ export const monitor = async ({
   name,
   url,
   inStockHandler,
-  refreshRateMs = 30000
+  refreshRateMs = 120000
 }: IMonitorConfig): Promise<void> => {
   const prependCarrier = (message: any): string => {
     return `${name}: ${message}`;
@@ -34,5 +34,6 @@ export const monitor = async ({
     error(prependCarrier(e));
   } finally {
     await driver.quit();
+    monitor({name, url, inStockHandler, refreshRateMs});
   }
 };
