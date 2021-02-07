@@ -61,6 +61,6 @@ export const createWebDriver = async (): Promise<ThenableWebDriver> => {
   return await new Builder().forBrowser("chrome").build();
 };
 
-export const getAllHandlerConfigs = (): IMonitorConfig[] => {
+export const getAllMonitorConfigs = (): IMonitorConfig[] => {
   return Object.values(handlerConfigs);
 };

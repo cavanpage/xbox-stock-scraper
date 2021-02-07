@@ -1,9 +1,9 @@
 import { log } from "../utilities";
 import { sendDiscordMessage } from "./discord";
 import { sendEmail } from "./email";
-const path = require("path");
 import notifier from "node-notifier";
 import { config } from "../config";
+import path from 'path';
 
 export const notify = (
   subject: string,
